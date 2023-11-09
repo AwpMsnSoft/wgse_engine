@@ -2,7 +2,23 @@
 name = "wgse_engine"
 version = "0.1.0"
 edition = "2021"
+build = "build.rs"
+authors = ["AWP_MCN_COFT <awpmcncoft-wgse@msneko.icu>"]
+license = "MIT OR Apache-2.0"
+readme = true
+publish = false
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = ["tools/ci"]
+
+[lib]
+name = "wgse_engine"
+path = "src/lib.rs"
+crate-type = ["staticlib"]
 
 [dependencies]
+thiserror = "1.0.50"
+wgse_utils = { git = "https://github.com/AwpMsnSoft/wgse_utils" }
+wgse_kernel = { git = "https://github.com/AwpMsnSoft/wgse_kernel", tag = "v.0.1.4" }
+anyhow = "1.0.75"
+enum_dispatch = "0.3.12"
