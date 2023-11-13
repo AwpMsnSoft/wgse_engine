@@ -53,7 +53,10 @@ impl OperandStack {
     /// ```
     pub fn try_pop_n(&mut self, n: usize) -> Result<Vec<Value>> {
         match self.len() {
-            len @ _ if len < n => Err(anyhow!(WgseEngineError::StackReverseIndexExceeded(n, len))),
+            len @ _ if len < n => Err(anyhow!(WgseEngineError::StackReverseIndexExceeded {
+                expect: n,
+                size: len
+            })),
             len @ _ => Ok(self.split_off(len - n)),
         }
     }
@@ -70,7 +73,10 @@ impl OperandStack {
 
     pub fn try_drop_n(&mut self, n: usize) -> Result<()> {
         match self.len() {
-            len @ _ if len < n => Err(anyhow!(WgseEngineError::StackReverseIndexExceeded(n, len))),
+            len @ _ if len < n => Err(anyhow!(WgseEngineError::StackReverseIndexExceeded {
+                expect: n,
+                size: len
+            })),
             _ => {
                 self.slots = self.slots.clone().into_iter().dropping_back(n).collect();
                 Ok(())
@@ -119,7 +125,7 @@ impl ControlStack {
         self.slots
             .last()
             .ok_or(anyhow!(WgseEngineError::MismatchedTarget(
-                "FunctionCallFrame"
+                "ControlFrameType::FunctionCall".to_string()
             )))
     }
 

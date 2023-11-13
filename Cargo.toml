@@ -19,7 +19,8 @@ crate-type = ["lib"]
 [dependencies]
 thiserror = "1.0.50"
 wgse_utils = { git = "https://github.com/AwpMsnSoft/wgse_utils" }
-wgse_kernel = { git = "https://github.com/AwpMsnSoft/wgse_kernel", tag = "v.0.1.5" }
+wgse_kernel = { git = "https://github.com/AwpMsnSoft/wgse_kernel", tag = "v.0.1.6" }
 anyhow = "1.0.75"
 enum_dispatch = "0.3.12"
 itertools = "0.11.0"
+binrw = "0.13.1"

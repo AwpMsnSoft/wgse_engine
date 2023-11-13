@@ -1,3 +1,1 @@
-fn main() {
-    let include = 1;
-}
+fn main() {}
