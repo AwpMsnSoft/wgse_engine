@@ -16,6 +16,10 @@ name = "wgse_engine"
 path = "src/lib.rs"
 crate-type = ["lib"]
 
+[features]
+meta_init = []
+meta_collect = []
+
 [dependencies]
 thiserror = "1.0.50"
 wgse_utils = { git = "https://github.com/AwpMsnSoft/wgse_utils" }

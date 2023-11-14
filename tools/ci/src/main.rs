@@ -94,6 +94,8 @@ fn main() -> Result<()> {
     }
 
     if what_to_run.contains(Check::CHECK) {
+        cmd!(sh, "cargo build --features meta_init {target}").run()?;
+        cmd!(sh, "cargo build --features meta_collect {target}").run()?;
         cmd!(sh, "cargo check --workspace {target}").run()?;
     }
 
