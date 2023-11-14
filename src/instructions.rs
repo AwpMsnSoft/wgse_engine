@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use super::kernel;
 
 #[cfg(not(feature = "meta_collect"))]
