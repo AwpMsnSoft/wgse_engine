@@ -36,21 +36,21 @@ pub struct ControlBlockSignature {
 
 #[derive(Clone, Debug, Default)]
 pub struct ControlFrame {
-    pub sig: ControlBlockSignature,
+    pub signature: ControlBlockSignature,
     pub instructions: Vec<Instruction>,
     pub registers: Registers,
 }
 
 impl ControlFrame {
     pub fn is_conditional_block(&self) -> bool {
-        self.sig.ty == ControlBlockType::ConditionalBlock
+        self.signature.ty == ControlBlockType::ConditionalBlock
     }
 
     pub fn is_loop_block(&self) -> bool {
-        self.sig.ty == ControlBlockType::LoopBlock
+        self.signature.ty == ControlBlockType::LoopBlock
     }
 
     pub fn is_function_call(&self) -> bool {
-        self.sig.ty == ControlBlockType::FunctionCall
+        self.signature.ty == ControlBlockType::FunctionCall
     }
 }
